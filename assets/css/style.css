@@ -1,16 +1,17 @@
-/* Importar fuentes */
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@0;1&family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 
-/* Aplicar fuentes */
 body {
-    font-family: "Roboto Slab", serif;
-    font-weight: 500;
-    font-size: 17px;
+    font-family: "Itim", cursive;
+    font-weight: 550;
+    font-size: 20px;
     font-style: normal;
     background: url('https://i.pinimg.com/originals/e5/37/d6/e537d679f43569aa6c5db9450c2253d2.gif') no-repeat center center fixed;
     background-size: cover;
-    color: white;
+    color: black;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -21,18 +22,16 @@ body {
 /* Estilo del logo */
 .logo {
     position: absolute;
-    top: 10px;
+    top: 5px;
     left: 10px;
-    width: 100px;
+    width: 150px;
     height: auto;
 }
 
 /* Estilo del título */
 .titulo {
     font-size: 2.5rem;
-    /* Tamaño de fuente más grande */
     font-family: "Titan One", sans-serif;
-    /* Fuente más llamativa para el título */
     text-align: center;
     margin: 20px 0;
     color: #000000;
@@ -45,27 +44,27 @@ main {
     display: flex;
     justify-content: space-between;
     height: calc(100vh - 40px);
-    /* Resta la altura del header si es necesario */
     padding: 10px;
-    /* Ajusta el padding aquí */
     box-sizing: border-box;
 }
 
-/* Estilo de la primera sección */
+
 .seccion1 {
     background-color: rgba(255, 255, 255, 0.8);
-    /* Fondo blanco con opacidad */
+
     padding: 40px;
-    margin: 20px;
+    margin-right: 15px;
+    margin-left: 30px;
     padding-left: 40px;
-    width: 85%;
-    height: 80%;
+    width: 55%;
+    height: 82%;
     box-sizing: border-box;
     border-radius: 10px;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0px 0px 18px 4px rgba(120,103,120,1);
+    box-shadow: 0px 0px 18px 4px rgba(120, 103, 120, 1);
     /* Resplandor alrededor del contenedor */
 }
 
@@ -73,28 +72,50 @@ main {
 .seccion2 {
     background-color: rgba(255, 255, 255, 0.8);
     /* Fondo blanco con opacidad */
-    padding: 20px;
-    width: 90%;
-    height: 83%;
+    padding: 40px;
+    margin-right: 15px;
+    margin-left: 30px;
+    width: 45%;
+    height: 82%;
     box-sizing: border-box;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 500px;
-    /* Controla el ancho máximo */
-    box-shadow: 0px 0px 18px 4px rgba(120,103,120,1);
+    box-shadow: 0px 0px 18px 4px rgba(120, 103, 120, 1);
     /* Resplandor alrededor del contenedor */
-    margin-top: -2px;
-    /* Ajusta este valor según sea necesario */
+    position: relative;
+    /* Asegura que el contenido dentro no afecta la disposición */
+    overflow: hidden;
+    /* Evita que el contenido desborde */
 }
 
 #output-text {
     width: 100%;
     height: 90%;
+    font-family: "Delius", cursive;
+    font-size: 17px;
+
+    
 }
 
+#input-text {
+    width: 100%;
+    font-family: "Delius", cursive;
+    font-size: 17px;
+}
+
+#shift {
+    font-family: "Delius", cursive;
+    font-size: 17px;
+    
+}
+#option {
+    display: block;
+    margin-top: 15px;
+    
+}
 
 /* Estilo del contenedor de texto */
 .contenedor-caja-texto,
@@ -103,8 +124,35 @@ main {
     margin-bottom: 20px;
 }
 
+#btn-encrypt,
+#btn-decrypt,
+#btn-clear {
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#btn-ok {
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 .contenedor-caja-texto {
     height: 60%;
+    width: 100%;
+}
+
+
+#encryption-type {
+    font-family: "Itim", cursive;
+    font-size: 18px;
+    font-weight: 550;
 }
 
 /* Estilo de los cuadros de texto */
@@ -122,13 +170,18 @@ textarea.cajatexto {
     text-align: center;
 }
 
+.resultado-container {
+    width: 90%;
+    height: 40%;
+}
+
 textarea.cajatexto2 {
     display: block;
-    padding: 80px;
+    padding: 30px;
     border-radius: 10px;
     height: 350px;
     /* Altura fija para el textarea */
-    width: 450px;
+    width: 100%;
     border: 1px solid #ccc;
     box-sizing: border-box;
     resize: none;
@@ -136,9 +189,8 @@ textarea.cajatexto2 {
     font-size: 16px;
     text-align: center;
     margin-top: 30px;
-    /* Ajusta este valor según sea necesario */
-}
 
+}
 
 /* Estilo de los botones */
 .btn-encriptar,
@@ -169,28 +221,70 @@ textarea.cajatexto2 {
     background-color: #e15b62;
     /* Rosa más claro para el hover */
     transform: scale(1.1);
-    transition: 0.3;
+    transition: 0.3s;
 }
 
 /* Estilo para el párrafo */
 .parrafo p {
-    font-size: 18px;
+    font-size: 19px;
     color: black;
-
 }
 
 .gato {
-    max-width: 90%;
+    width: 50%;
     height: auto;
     border-radius: 10px;
-    margin-top: -100x;
-    /* Mueve la imagen hacia arriba */
+    margin-top: 90px;
 
 }
 
-.texto {
+/* Estilo del contenedor del mensaje del gato */
+.mensaje-gato {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    height: 50px;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: pink;
+    background-position: center;
+    text-align: center;
     color: black;
-    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    z-index: 10;
+    /* Asegura que el mensaje esté por encima de la imagen */
+    opacity: 0.9;
+    /* Ajusta el nivel de opacidad */
 }
 
+/* Triángulo de diálogo */
+.mensaje-gato::before {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    /* Ajusta la posición vertical */
+    left: 50%;
+    /* Centra horizontalmente */
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid pink;
+}
 
+/* Estilo del texto dentro del mensaje */
+.mensaje-gato p {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    color: black;
+    font-family: "Itim", cursive;
+}

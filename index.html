@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <img src="/img/logo-removebg-preview.png" alt="logo-luminus" class="logo">
+        <img src="./assets/img/logo-removebg-preview.png"alt="logo-luminus" class="logo">
     </header>
     <div class="titulo">
         <h3>ENCRIPTADOR DE MENSAJES</h3>
@@ -18,26 +18,48 @@
         <!-- Primera sección -->
         <section class="seccion1">
             <div class="contenedor-caja-texto">
-                <textarea placeholder="Escribe el texto aquí." class="cajatexto"></textarea>
-            </div>
-            <div class="parrafo">
-                <p>Solo letras minúsculas y sin acentos.</p>
+                <textarea id="input-text" placeholder="Escribe el texto aquí." class="cajatexto"></textarea>
             </div>
             <div class="contenedor-botones">
-                <input type="button" class="btn-encriptar" value="Encriptar">
-                <input type="button" class="btn-desencriptar" value="Desencriptar">
+                <input type="button" id="btn-encrypt" class="btn-encriptar" value="Encriptar">
+                <input type="button" id="btn-decrypt" class="btn-desencriptar" value="Desencriptar">
+                <input type="button" id="btn-clear" class="btn-limpiar" value="Limpiar">
             </div>
+
+            <form id="encryption-form">
+                <label for="encryption-type" class="texto">Selecciona el tipo de codificación:</label>
+                <select id="encryption-type" name="encryption-type">
+                    <option value="base64">Base64</option>
+                    <option value="hex">Hexadecimal</option>
+                    <option value="rot13">ROT13</option>
+                    <option value="caesar">Cifra de César</option>
+                    <option value="binario">Binario</option>
+                    <option value="emojis">Emójis</option>
+                </select>
+                <div id="option">
+                    <label for="shift" class="texto" >Desplazamiento (solo para Cifra de César):</label>
+                    <input type="number" id="shift" name="shift" value="3" min="1" max="25" />
+                </div>
+                <input type="button" id="btn-ok" class="btn-ok" value="Ok">
+            </form>
         </section>
-        
+
         <!-- Segunda sección -->
         <section class="seccion2">
-            <img src="https://i.pinimg.com/564x/b1/44/25/b144253bd2c87a9263c277541956b41f.jpg" alt="gato-imagen" class="gato">
-            <div>
-                <textarea placeholder="Aquí se mostrará tu nuevo texto." class="cajatexto2"></textarea>
+            <!-- Contenedor para mensajes del gato -->
+            <div id="mensaje-gato" class="mensaje-gato"></div>
+
+            <img id="gato-imagen" src="https://i.pinimg.com/564x/b1/44/25/b144253bd2c87a9263c277541956b41f.jpg"
+                alt="gato-imagen" class="gato">
+            <div class="resultado-container">
+                <textarea id="output-text" placeholder="Aquí se mostrará tu nuevo texto." class="cajatexto2"
+                    readonly></textarea>
             </div>
         </section>
     </main>
 
-    <script src="assets/javascript/script.js"></script>
+    <script type="module" src="assets/javascript/script.js"></script>
+    <script type="module" src="assets/javascript/module1.js"></script>
+    <script src="assets/javascript/prueba.js"></script>
 </body>
 </html>
