@@ -41,15 +41,13 @@ La estructura de la página web se compone de:
 
 ![Botones](./assets/img/botones.png "Botones")
 
-    - **El primero** es para encriptar
+    - El primero es para encriptar
     
-    - **El segundo** es para desencriptar
+    - El segundo es para desencriptar
     
-    - **El tercero** para limpiar la información. 
-    
-    - Y por último **el botón de ok** ubicado al último de la sección dos, significa que todo está conforme.
+    - El tercero para limpiar la información. 
 
-- **Listas desplegables:** la primera es para seleccionar el tipo de codificación, el segundo, para seleccionar el desplazamiento solo para el cifrado cesar.
+- **Listas desplegables:** la primera es para seleccionar el tipo de codificación, el segundo aparece cuando se preciona la optión de *"Cifra de César"*, para seleccionar el desplazamiento solo para el cifrado cesar.
 
 ![Listas](./assets/img/lista.png "listas")
 
