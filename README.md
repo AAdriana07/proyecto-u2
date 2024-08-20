@@ -9,6 +9,8 @@
 
 >Hay situaciones en la vida cotidiana en la que tenemos necesidad de enviar mensajes sin que nadie se enteré lo que escribimos y solo se requiere que a la persona que le enviamos lo sepa. 
 
+![Mensajes cotidianos](./assets/img/mensajes.jpg "Mensajes cotidianos")
+
 Con los mensajes ocultos e imposibles de leer a simple vista es la solución al caso; se puede enviar textos a amigos y pareja de forma segura sin la necesidad que una persona externa lo lea o entienda.
 
 ## Objetivos del proyecto 
@@ -19,17 +21,25 @@ Con **el encriptador de mensajes**, se puede enviar información a cualquier per
 
 El encriptado de mensajes puede ser de mucha utilidad si se desea enviar un mensaje privado con uno a más usuarios, sin que sea legible entender a simple vista, solo la información será compartida con quien se deseé, ya sea familiares, amigos o pareja.
 
-## Estructura y funcionalidades: 
+## Estructura y funcionalidades 
 
 La estructura de la página web se compone de:
 
 - **Título:** tema de la página.
 
+![Titulo](./assets/img/titulo.png "Encriptador de menzajes")
+
 - **Logo del equipo:** ubicado a la izquierda.
+
+![Logo](./assets/img/logo-removebg-preview.png "Logo")
 
 - **Dos secciones:** la primera es para encriptar y la segunda para desencriptar.
 
-- **Botones:** están después de la caja para escribir. Estos tienen diferentes funcionalidades,   
+![Secciones](./assets/img/secciones.png "secciones")
+
+- **Botones:** están después de la caja para escribir. Estos tienen diferentes funcionalidades:
+
+![Botones](./assets/img/botones.png "Botones")
 
     - **El primero** es para encriptar
     
@@ -41,9 +51,13 @@ La estructura de la página web se compone de:
 
 - **Listas desplegables:** la primera es para seleccionar el tipo de codificación, el segundo, para seleccionar el desplazamiento solo para el cifrado cesar.
 
+![Listas](./assets/img/lista.png "listas")
+
 - **Imágenes y diálogo:** La imagen es entretenida y la nube del dialogo aparecen frases que tienes en común dos palabras: *“gatos”* y *“programación”* cuando ponen el cursor sobre él.
 
-## Guía para su utilización:
+![Gato y mensaje](./assets/img/mensaje%20gato.png "Menzaje y gato")
+
+## Guía para los usuarios
 
 1. **Paso 1:** escribe el texto que se desea encriptar sobre la caja de texto ubicado en la sección izquierda. 
 
