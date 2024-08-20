@@ -1,6 +1,5 @@
 import { encriptarTexto, desencriptarTexto, limpiar } from "./module1.js";
 
-
 document.addEventListener("DOMContentLoaded", () => {
     const botonEncriptar = document.querySelector("#btn-encrypt");
     const botonDesencriptar = document.querySelector("#btn-decrypt");
@@ -10,10 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const metodoSelect = document.querySelector("#encryption-type");
     const shiftInput = document.querySelector("#shift");
 
-    // Seleccionamos la imagen del gato y el contenedor de mensajes
+
     const gatoImagen = document.querySelector("#gato-imagen");
     const mensajeDiv = document.querySelector("#mensaje-gato");
 
+    
     // Mensajes graciosos del gato
     const mensajesGato = [
         '¡Miau! ¡Tengo más secretos que tu diario! 🐱🔒',
@@ -37,18 +37,55 @@ document.addEventListener("DOMContentLoaded", () => {
         '¡No puedo escribir código, pero puedo ofrecerte un montón de ternura! 🐱'
     ];
 
-    // Función para mostrar un mensaje aleatorio del gato
-    function mostrarMensajeGato() {
-        const mensajeAleatorio = mensajesGato[Math.floor(Math.random() * mensajesGato.length)];
-        mensajeDiv.textContent = mensajeAleatorio;
+    function obtenerMensajeAleatorio() {
+        const indiceAleatorio = Math.floor(Math.random() * mensajesGato.length);
+        return mensajesGato[indiceAleatorio];
     }
 
-    // Añadir eventos a la imagen del gato
-    gatoImagen.addEventListener('click', mostrarMensajeGato);
-    gatoImagen.addEventListener('mouseover', mostrarMensajeGato);
-    gatoImagen.addEventListener('mouseout', () => {
-        mensajeDiv.textContent = ''; // Limpiar el mensaje cuando el ratón sale de la imagen
+    function mostrarMensajeGato() {
+        const mensajeAleatorio = obtenerMensajeAleatorio();
+        mensajeDiv.textContent = mensajeAleatorio;
+        mensajeDiv.style.display = 'block';
+
+        // Ocultar el mensaje después de 10 segundos
+        setTimeout(() => {
+            mensajeDiv.style.display = 'none';
+        }, 10000); // 10 segundos
+    }
+
+    function iniciarCicloMensajes() {
+        // Mostrar el primer mensaje inmediatamente
+        mostrarMensajeGato();
+
+        // Configurar el intervalo para cambiar el mensaje cada 20 segundos
+        setInterval(() => {
+            mostrarMensajeGato();
+        }, 20000); // 20 segundos (10s visible + 10s de espera)
+    }
+
+    // Mostrar u ocultar el campo de desplazamiento según el método seleccionado
+    metodoSelect.addEventListener('change', function() {
+        const seleccion = metodoSelect.value;
+        if (seleccion === 'cifrado-cesar') {
+            shiftInput.parentElement.style.display = 'block'; // Mostrar el campo de desplazamiento
+        } else {
+            shiftInput.parentElement.style.display = 'none'; // Ocultar el campo de desplazamiento
+        }
+
+        // Ocultar todas las secciones de información
+        const infos = document.querySelectorAll('.option');
+        infos.forEach(function(option) {
+            option.style.display = 'none';
+        });
+
+        // Mostrar la sección correspondiente a la opción seleccionada
+        if (seleccion) {
+            document.getElementById(seleccion).style.display = 'block';
+        }
     });
+
+    // Iniciar el ciclo de mensajes cuando el documento esté listo
+    iniciarCicloMensajes();
 
     // Función para manejar el clic en el botón de encriptar
     botonEncriptar.onclick = function() {
@@ -66,4 +103,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Función para manejar el clic en el botón de limpiar
     botonLimpiar.onclick = limpiar;
+
+    // Manejar la selección de métodos de encriptación
+    metodoSelect.addEventListener('change', function() {
+        // Ocultar todas las secciones de información
+        const infos = document.querySelectorAll('.option');
+        infos.forEach(function(option) {
+            option.style.display = 'none';
+        });
+
+        // Mostrar la sección correspondiente a la opción seleccionada
+        const seleccion = metodoSelect.value;
+        if (seleccion) {
+            document.getElementById(seleccion).style.display = 'block';
+        }
+    });
 });

@@ -111,9 +111,10 @@ main {
     font-size: 17px;
     
 }
-#option {
-    display: block;
+.option {
+    display: none;
     margin-top: 15px;
+    text-align: center;
     
 }
 
@@ -132,17 +133,6 @@ main {
     font-weight: bold;
 }
 
-#btn-ok {
-    font-family: "Open Sans", sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    display: block;
-    margin-top: 15px;
-    justify-content: center;
-    align-items: center;
-    
-}
-
 .contenedor-caja-texto {
     height: 60%;
     width: 100%;
@@ -153,6 +143,10 @@ main {
     font-family: "Itim", cursive;
     font-size: 18px;
     font-weight: 550;
+}
+
+#shift {
+    font-weight: 600;
 }
 
 /* Estilo de los cuadros de texto */
@@ -195,8 +189,7 @@ textarea.cajatexto2 {
 /* Estilo de los botones */
 .btn-encriptar,
 .btn-desencriptar,
-.btn-limpiar,
-.btn-ok {
+.btn-limpiar {
     font-weight: 900px;
     padding: 10px 20px;
     border: none;
@@ -215,8 +208,7 @@ textarea.cajatexto2 {
 
 .btn-encriptar:hover,
 .btn-desencriptar:hover,
-.btn-limpiar:hover,
-.btn-ok:hover {
+.btn-limpiar:hover {
     font-weight: 900px;
     background-color: #e15b62;
     /* Rosa más claro para el hover */

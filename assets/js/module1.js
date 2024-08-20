@@ -1,5 +1,4 @@
-// Funciones de encriptación y desencriptación
-
+// Encriptación y desencriptación para Base64
 function encriptarBase64(texto) {
     return btoa(texto);
 }
@@ -8,6 +7,7 @@ function desencriptarBase64(texto) {
     return atob(texto);
 }
 
+// Encriptación y desencriptación para Hexadecimal
 function encriptarHex(texto) {
     return Array.from(texto).map(c => c.charCodeAt(0).toString(16).padStart(2, '0')).join('');
 }
@@ -16,19 +16,23 @@ function desencriptarHex(texto) {
     return texto.match(/.{1,2}/g).map(h => String.fromCharCode(parseInt(h, 16))).join('');
 }
 
+// Encriptación ROT13 extendida a números
 function encriptarROT13(texto) {
-    return texto.replace(/[a-zA-Z]/g, function(c) {
-        var code = c.charCodeAt(0);
+    return texto.replace(/[a-zA-Z0-9]/g, function(c) {
+        const code = c.charCodeAt(0);
         if (code >= 65 && code <= 90) return String.fromCharCode(((code - 65 + 13) % 26) + 65);
         if (code >= 97 && code <= 122) return String.fromCharCode(((code - 97 + 13) % 26) + 97);
+        if (code >= 48 && code <= 57) return String.fromCharCode(((code - 48 + 5) % 10) + 48); // ROT13 para números
     });
 }
 
+// Encriptación y desencriptación César extendida a números
 function encriptarCesar(texto, desplazamiento) {
-    return texto.replace(/[a-zA-Z]/g, function(c) {
-        var code = c.charCodeAt(0);
-        var base = (code >= 65 && code <= 90) ? 65 : 97;
-        return String.fromCharCode(((code - base + desplazamiento) % 26) + base);
+    return texto.replace(/[a-zA-Z0-9]/g, function(c) {
+        const code = c.charCodeAt(0);
+        if (code >= 65 && code <= 90) return String.fromCharCode(((code - 65 + desplazamiento) % 26) + 65);
+        if (code >= 97 && code <= 122) return String.fromCharCode(((code - 97 + desplazamiento) % 26) + 97);
+        if (code >= 48 && code <= 57) return String.fromCharCode(((code - 48 + desplazamiento) % 10) + 48);
     });
 }
 
@@ -36,85 +40,36 @@ function desencriptarCesar(texto, desplazamiento) {
     return encriptarCesar(texto, 26 - desplazamiento);
 }
 
+// Encriptar texto a binario (incluye números)
 function encriptarTextoABinario(texto) {
-    return Array.from(texto).map(c => c.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
+    return Array.from(texto)
+        .map(c => c.charCodeAt(0).toString(2).padStart(8, '0'))
+        .join(' ');
 }
 
+// Desencriptar binario a texto (incluye números)
 function desencriptarBinarioATexto(texto) {
-    return texto.split(' ').map(b => String.fromCharCode(parseInt(b, 2))).join('');
+    return texto.split(' ')
+        .map(b => String.fromCharCode(parseInt(b, 2)))
+        .join('');
 }
 
-const emojiAbc = {
-    'a': '😀',
-    'b': '😁',
-    'c': '😂',
-    'd': '😃',
-    'e': '😄',
-    'f': '😅',
-    'g': '😆',
-    'h': '😇',
-    'i': '😈',
-    'j': '😉',
-    'k': '😊',
-    'l': '😋',
-    'm': '😌',
-    'n': '😍',
-    'ñ': '🤩',
-    'o': '😎',
-    'p': '😏',
-    'q': '😐',
-    'r': '😑',
-    's': '😒',
-    't': '😓',
-    'u': '😔',
-    'v': '😕',
-    'w': '😖',
-    'x': '😗',
-    'y': '😘',
-    'z': '😙',
-    ' ': '😚',
-    '0': '😛',
-    '1': '😜',
-    '2': '😝',
-    '3': '😞',
-    '4': '😟',
-    '5': '😠',
-    '6': '😡',
-    '7': '😢',
-    '8': '😣',
-    '9': '😤',
-    '!': '😥',
-    '¡': '🫠',
-    '?': '😦',
-    '¿': '🫥',
-    '.': '😧',
-    ',': '😨',
-    ';': '😾',
-    'á': '👻',
-    'é': '😹',
-    'í': '🐼',
-    'ó': '🏵️',
-    'ú': '💀'
+// Ejemplo de uso
+const texto = "Hola123";
+const binario = encriptarTextoABinario(texto);
+console.log("Texto en binario:", binario);
 
-}
+const textoDesencriptado = desencriptarBinarioATexto(binario);
+console.log("Texto desencriptado:", textoDesencriptado);
 
-function encriptarEmojis(texto) { 
-  return texto.split('').map(char => emojiAbc[char.toLowerCase()] || char).join('');
-
-}
-
-function desencriptarEmojis(encriptarEmojis) {
-    const reversoEmojiAbc = Object.fromEntries(Object.entries(emojiAbc).map(([key, value]) => [value, key]));
-    return encriptarEmojis.split('').map(emoji => reversoEmojiAbc[emoji] || emoji).join('');
-}
-
-
+// Limpiar la entrada y salida
 function limpiar() {
     document.querySelector("#input-text").value = "";
     document.querySelector("#output-text").value = "";
     document.querySelector("#mensaje-gato").textContent = ''; // Limpiar el mensaje del gato
 }
 
+// Función general para encriptar texto según el método
 function encriptarTexto(texto, metodo) {
     switch (metodo) {
         case 'base64':
@@ -127,13 +82,12 @@ function encriptarTexto(texto, metodo) {
             return encriptarCesar(texto, parseInt(document.querySelector("#shift").value) || 3); // Usar valor del input para el desplazamiento
         case 'binario':
             return encriptarTextoABinario(texto);
-        case 'emojis':
-            return encriptarEmojis(texto);
         default:
             return texto;
     }
 }
 
+// Función general para desencriptar texto según el método
 function desencriptarTexto(texto, metodo) {
     switch (metodo) {
         case 'base64':
@@ -146,8 +100,6 @@ function desencriptarTexto(texto, metodo) {
             return desencriptarCesar(texto, parseInt(document.querySelector("#shift").value) || 3); // Usar valor del input para el desplazamiento
         case 'binario':
             return desencriptarBinarioATexto(texto);
-        case 'emojis':
-            return desencriptarEmojis(texto);
         default:
             return texto;
     }
@@ -165,7 +117,5 @@ export {
     encriptarCesar,
     desencriptarCesar,
     encriptarTextoABinario,
-    desencriptarBinarioATexto
+    desencriptarBinarioATexto,
 };
-
-
